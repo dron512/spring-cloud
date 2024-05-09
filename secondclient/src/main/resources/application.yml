@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: client-service
+    name: second-service
 eureka:
 #  instance:
 #    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
