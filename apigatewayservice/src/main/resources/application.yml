@@ -30,8 +30,8 @@ spring:
           predicates:
             - Path=/second/**
           filters:
-            - AddRequestHeader=Req-first-Header, first
-            - AddResponseHeader=Res-first-Header, first
+            - AddRequestHeader=Req-first-Header, second
+            - AddResponseHeader=Res-first-Header, second
             - name: CustomFilter
 
 
