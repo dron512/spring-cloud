@@ -15,7 +15,7 @@ spring:
     gateway:
       routes:
         - id: first_service
-          uri: http://localhost:8081/first/**
+          uri: lb://first-service:8081/first/**
           predicates:
             - Path=/first/**
           filters:
