@@ -36,7 +36,6 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        System.out.println("username: " + username);
         UserMapperDto userMapperDto = userRepository.findByEmail(username);
 
         if (userMapperDto == null)

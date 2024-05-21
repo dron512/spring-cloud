@@ -33,5 +33,12 @@ spring:
             - AddRequestHeader=Req-first-Header, second
             - AddResponseHeader=Res-first-Header, second
             - name: CustomFilter
-
+        - id: user_service
+          uri: lb://user-service:8083/user-service/**
+          predicates:
+            - Path=/user-service/**
+          filters:
+            - AddRequestHeader=Req-first-Header, second
+            - AddResponseHeader=Res-first-Header, second
+            - name: CustomFilter
 

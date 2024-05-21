@@ -43,8 +43,6 @@ public class AuthenticationFilter  extends UsernamePasswordAuthenticationFilter 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest req, HttpServletResponse res)
             throws AuthenticationException {
-        System.out.println(req.getParameter("user_email"));
-        System.out.println(req.getParameter("user_password"));
         UserDto creds =
                 UserDto.builder()
                         .user_email(req.getParameter("user_email"))

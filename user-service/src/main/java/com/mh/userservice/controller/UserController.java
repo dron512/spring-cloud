@@ -27,6 +27,6 @@ public class UserController {
 
     @GetMapping("/login")
     public void login(String user_email, String user_password, HttpServletResponse res) throws IOException {
-        res.sendRedirect("/users/login?email="+user_email+"&password="+user_password);
+        res.sendRedirect("/users/login?user_email="+user_email+"&user_password="+user_password);
     }
 }
