@@ -7,7 +7,7 @@ spring:
     config:
       server:
 #        native:
-#          search-locations: file:///C://work//git-local-repo
+#          search-locations: file:///Users/myounghoipark/Documents-IntelliJ/config-repo
         git: #default
           uri: https://github.com/dron512/spring-cloud-config
           default-label: main
