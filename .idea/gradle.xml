@@ -58,11 +58,18 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/user-service" />
-        <option name="gradleJvm" value="17" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/user-service-jpa" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/user-service" />
+            <option value="$PROJECT_DIR$/user-service-jpa" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/user-service-mybatis" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/user-service-mybatis" />
           </set>
         </option>
       </GradleProjectSettings>

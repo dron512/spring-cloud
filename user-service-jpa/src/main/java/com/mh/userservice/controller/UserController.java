@@ -23,7 +23,7 @@ public class UserController {
 
     @GetMapping("/env")
     public String env(){
-        return environment.getProperty("local.server.port");
+        return String.format("local.server.port =  %s",environment.getProperty("local.server.port"));
     }
 
     @GetMapping("/add-user")
