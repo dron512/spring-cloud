@@ -1,0 +1,4 @@
+docker build -t apigatewayserver .
+docker tag apigatewayserver parkmyounghoi/apigatewayserver
+docker push parkmyounghoi/apigatewayserver
+docker run -p 8080:8080 -d --network javamysql --name apigatewayserver parkmyounghoi/apigatewayserver
