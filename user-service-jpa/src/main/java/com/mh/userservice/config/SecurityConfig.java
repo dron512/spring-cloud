@@ -38,9 +38,10 @@ public class SecurityConfig {
         http.authorizeHttpRequests((authz) -> authz
                                 .requestMatchers(new AntPathRequestMatcher("/actuator/**")).permitAll()
 //                                .requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll()
-//                                .requestMatchers(new AntPathRequestMatcher("/users", "POST")).permitAll()
+                                .requestMatchers(new AntPathRequestMatcher("/add-user", "POST")).permitAll()
+                                .requestMatchers(new AntPathRequestMatcher("/login", "GET")).permitAll()
 
-                                .requestMatchers(new AntPathRequestMatcher("/users", "*")).permitAll()
+//                                .requestMatchers(new AntPathRequestMatcher("/users", "*")).permitAll()
                                 .requestMatchers(new AntPathRequestMatcher("*")).permitAll()
 
 //                        .requestMatchers("/**").access(this::hasIpAddress)
