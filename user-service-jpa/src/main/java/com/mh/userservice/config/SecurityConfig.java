@@ -21,11 +21,13 @@ public class SecurityConfig {
     private final UserService userService;
     private final Environment environment;
     private final PasswordEncoder passwordEncoder;
+
     @Bean
     protected SecurityFilterChain configure(HttpSecurity http) throws Exception {
         // Configure AuthenticationManagerBuilder
         AuthenticationManagerBuilder authenticationManagerBuilder =
                 http.getSharedObject(AuthenticationManagerBuilder.class);
+
         authenticationManagerBuilder.userDetailsService(userService).passwordEncoder(passwordEncoder);
 
         AuthenticationManager authenticationManager = authenticationManagerBuilder.build();

@@ -1,7 +1,7 @@
 package com.mh.userservice.config;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mh.userservice.dto.UserDto;
+import com.mh.userservice.dto.UserReqDto;
+import com.mh.userservice.dto.UserResDto;
 import com.mh.userservice.service.UserService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
@@ -17,7 +17,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
 import java.io.IOException;
@@ -43,22 +42,22 @@ public class AuthenticationFilter  extends UsernamePasswordAuthenticationFilter 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest req, HttpServletResponse res)
             throws AuthenticationException {
-        UserDto creds =
-                UserDto.builder()
-                        .user_email(req.getParameter("user_email"))
-                        .user_password(req.getParameter("user_password"))
+        UserReqDto creds =
+                UserReqDto.builder()
+                        .email(req.getParameter("email"))
+                        .password(req.getParameter("password"))
                         .build();
 
         return getAuthenticationManager().authenticate(
-                new UsernamePasswordAuthenticationToken(creds.getUser_email(), creds.getUser_password(), new ArrayList<>()));
+                new UsernamePasswordAuthenticationToken(creds.getEmail(), creds.getPassword(), new ArrayList<>()));
     }
 
     @Override
     protected void successfulAuthentication(HttpServletRequest req, HttpServletResponse res, FilterChain chain,
                                             Authentication auth) throws IOException, ServletException {
-
+        System.out.println("여기오나");
         String userName = ((User) auth.getPrincipal()).getUsername();
-        UserDto userDetails = userService.getUserDetailsByEmail(userName);
+        UserResDto userDetails = userService.getUserDetailsByEmail(userName);
 
         byte[] secretKeyBytes = Base64.getEncoder().encode(environment.getProperty("token.secret").getBytes());
 
@@ -67,13 +66,13 @@ public class AuthenticationFilter  extends UsernamePasswordAuthenticationFilter 
         Instant now = Instant.now();
 
         String token = Jwts.builder()
-                .setSubject(userDetails.getUser_id())
+                .setSubject(userDetails.getId())
                 .setExpiration(Date.from(now.plusMillis(Long.parseLong(environment.getProperty("token.expiration_time")))))
                 .setIssuedAt(Date.from(now))
                 .signWith(secretKey)
                 .compact();
 
         res.addHeader("token", token);
-        res.addHeader("userId", userDetails.getUser_id());
+        res.addHeader("userId", userDetails.getId());
     }
 }

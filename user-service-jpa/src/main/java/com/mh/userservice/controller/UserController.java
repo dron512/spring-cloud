@@ -1,20 +1,18 @@
 package com.mh.userservice.controller;
 
-import com.mh.userservice.config.AuthenticationFilter;
-import com.mh.userservice.dto.UserDto;
+import com.mh.userservice.dto.UserReqDto;
+import com.mh.userservice.dto.UserResDto;
 import com.mh.userservice.service.UserService;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.env.Environment;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/user-service")
 @RequiredArgsConstructor
 public class UserController {
 
@@ -26,15 +24,15 @@ public class UserController {
         return String.format("local.server.port =  %s",environment.getProperty("local.server.port"));
     }
 
-    @GetMapping("/add-user")
-    public String user(){
-        userService.createUser(UserDto.builder().user_id("test").user_email("test").user_password("test").user_name("test").build());
-        return "User";
+    @PostMapping("/add-user")
+    public ResponseEntity<UserResDto> user(@Valid @RequestBody UserReqDto userReqDto){
+        UserResDto userResDto = userService.createUser(userReqDto);
+        return ResponseEntity.ok(userResDto);
     }
 
     @GetMapping("/login")
-    public void login(String user_email, String user_password, HttpServletResponse res) throws IOException {
-        res.sendRedirect("/users/login?user_email="+user_email+"&user_password="+user_password);
+    public void login(String email, String password, HttpServletResponse res) throws IOException {
+        res.sendRedirect("/users/login?email="+email+"&password="+password);
     }
 
 

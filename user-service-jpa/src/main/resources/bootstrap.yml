@@ -5,3 +5,10 @@ spring:
     config:
       uri: http://localhost:8888
       name: user-service
+
+encrypt:
+  keyStore:
+    location: file://${user.home}/work/spring-cloud/configserver/server.jks
+    password: 123456
+    alias: mytestkey
+    secret: 123456

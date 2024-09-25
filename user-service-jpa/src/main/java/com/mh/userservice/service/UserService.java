@@ -1,6 +1,7 @@
 package com.mh.userservice.service;
 
-import com.mh.userservice.dto.UserDto;
+import com.mh.userservice.dto.UserReqDto;
+import com.mh.userservice.dto.UserResDto;
 import com.mh.userservice.entity.UserEntity;
 import com.mh.userservice.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -45,17 +46,17 @@ public class UserService implements UserDetailsService {
                         new ArrayList<>());
     }
 
-    public UserDto createUser(UserDto userDto) {
-        userDto.setUser_id(UUID.randomUUID().toString());
+    public UserResDto createUser(UserReqDto userReqDto) {
+        userReqDto.setId(UUID.randomUUID().toString());
 
         ModelMapper mapper = new ModelMapper();
 
-        UserEntity userMapperDto = mapper.map(userDto, UserEntity.class);
-        userMapperDto.setPassword(passwordEncoder.encode(userDto.getUser_password()));
+        UserEntity userMapperDto = mapper.map(userReqDto, UserEntity.class);
+        userMapperDto.setPassword(passwordEncoder.encode(userReqDto.getPassword()));
 
         userRepository.save(userMapperDto);
 
-        UserDto returnUserDto = mapper.map(userMapperDto, UserDto.class);
+        UserResDto returnUserDto = mapper.map(userMapperDto, UserResDto.class);
 
         return returnUserDto;
     }
@@ -64,7 +65,7 @@ public class UserService implements UserDetailsService {
         return userRepository.findAll();
     }
 
-    public UserDto getUserDetailsByEmail(String email) {
+    public UserResDto getUserDetailsByEmail(String email) {
         UserEntity userEntity = userRepository.findByEmail(email);
         if (userEntity == null)
             throw new UsernameNotFoundException(email);
@@ -72,7 +73,7 @@ public class UserService implements UserDetailsService {
         ModelMapper mapper = new ModelMapper();
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 
-        UserDto userDto = mapper.map(userEntity, UserDto.class);
+        UserResDto userDto = mapper.map(userEntity, UserResDto.class);
         return userDto;
     }
 }
