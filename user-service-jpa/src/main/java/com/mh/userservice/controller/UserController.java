@@ -2,16 +2,22 @@ package com.mh.userservice.controller;
 
 import com.mh.userservice.dto.UserReqDto;
 import com.mh.userservice.dto.UserResDto;
+import com.mh.userservice.entity.UserEntity;
 import com.mh.userservice.service.UserService;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
 import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -41,6 +47,12 @@ public class UserController {
     @GetMapping("/login")
     public void login(String email, String password, HttpServletResponse res) throws IOException {
         res.sendRedirect("/users/login?email="+email+"&password="+password);
+    }
+
+    @GetMapping("/users")
+    public List<UserResDto> users(){
+        List<UserEntity> list = userService.getUserByAll();
+        return list.stream().map(userEntity -> new ModelMapper().map(userEntity,UserResDto.class)).toList();
     }
 
 

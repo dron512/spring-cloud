@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -61,7 +62,7 @@ public class UserService implements UserDetailsService {
         return returnUserDto;
     }
 
-    public Iterable<UserEntity> getUserByAll() {
+    public List<UserEntity> getUserByAll() {
         return userRepository.findAll();
     }
 
@@ -76,4 +77,7 @@ public class UserService implements UserDetailsService {
         UserResDto userDto = mapper.map(userEntity, UserResDto.class);
         return userDto;
     }
+
+
+
 }

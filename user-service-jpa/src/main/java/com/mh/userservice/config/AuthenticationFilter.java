@@ -71,6 +71,7 @@ public class AuthenticationFilter  extends UsernamePasswordAuthenticationFilter 
                 .signWith(secretKey)
                 .compact();
 
+        res.getWriter().println(token);
         res.addHeader("token", token);
         res.addHeader("userId", userDetails.getId());
     }
