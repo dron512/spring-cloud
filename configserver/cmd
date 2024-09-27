@@ -1,0 +1,7 @@
+docker rmi configserver
+docker rmi parkmyounghoi/configserver
+docker rm configserver
+docker build -t configserver .
+docker tag configserver parkmyounghoi/configserver
+docker push parkmyounghoi/configserver
+docker run -p 8888:8888 -d --network javamysql --name configserver parkmyounghoi/configserver

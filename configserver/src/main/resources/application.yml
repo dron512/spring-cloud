@@ -11,13 +11,28 @@ spring:
         git: #default
           uri: https://github.com/dron512/spring-cloud-config
           default-label: main
-        bootstrap: true
+    #        bootstrap: true
 
-eureka:
+#encrypt:
+#  keyStore:
+#    location: file://${user.home}/work/spring-cloud/configserver/server.jks
+#    password: 123456
+#    alias: mytestkey
+#    secret: 123456
+#  rsa:
+#    algorithm: oaep
+
+#eureka:
 #  instance:
 #    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
-  client:
-    service-url:
-      defaultZone: http://127.0.0.1:8761/eureka
-    fetch-registry: true
-    register-with-eureka: true
+#  client:
+#    service-url:
+#      defaultZone: http://eurekaserver:8761/eureka
+#    fetch-registry: true
+#    register-with-eureka: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, busrefresh, refresh, metrics

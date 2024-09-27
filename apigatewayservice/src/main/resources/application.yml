@@ -33,12 +33,29 @@ spring:
             - AddRequestHeader=Req-first-Header, second
             - AddResponseHeader=Res-first-Header, second
             - name: CustomFilter
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/add-user
+            - Method=POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/login
+            - Method=GET
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
         - id: user_service
-          uri: lb://user-service:8083/user-service/**
+          uri: lb://USER-SERVICE
           predicates:
             - Path=/user-service/**
+            - Method=GET,POST
           filters:
-            - AddRequestHeader=Req-first-Header, second
-            - AddResponseHeader=Res-first-Header, second
-            - name: CustomFilter
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+
 
