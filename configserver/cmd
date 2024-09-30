@@ -1,6 +1,6 @@
+docker rm configserver
 docker rmi configserver
 docker rmi parkmyounghoi/configserver
-docker rm configserver
 docker build -t configserver .
 docker tag configserver parkmyounghoi/configserver
 docker push parkmyounghoi/configserver
