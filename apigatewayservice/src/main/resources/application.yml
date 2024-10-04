@@ -14,6 +14,7 @@ spring:
   cloud:
     gateway:
       routes:
+        # First-Service
         - id: first_service
 #          uri: lb://localhost:8081
           uri: lb://FIRST-SERVICE
@@ -26,6 +27,7 @@ spring:
                 baseMessage: Hi, there.
                 preLogger: true
                 postLogger: true
+        # Second-Service
         - id: second_service
 #          uri: http://localhost:8082
           uri: lb://SECOND-SERVICE
@@ -35,6 +37,7 @@ spring:
             - AddRequestHeader=Req-first-Header, second
             - AddResponseHeader=Res-first-Header, second
             - name: CustomFilter
+        # User-Service
         - id: user-service
           uri: lb://USER-SERVICE
           predicates:
@@ -68,5 +71,20 @@ spring:
             - RemoveRequestHeader=Cookie
             - RewritePath=/user-service/(?<segment>.*), /$\{segment}
             - AuthorizationHeaderFilter
-
-
+        #Order-Service
+        - id: user_service
+          uri: lb://ORDER-SERVICE
+          predicates:
+            - Path=/order-service/**
+            - Method=GET,POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/order-service/(?<segment>.*), /$\{segment}
+        #Catalog-Service
+        - id: catalog-service
+          uri: lb://CATALOG-SERVICE
+          predicates:
+            - Path=/catalog-service/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/catalog-service/(?<segment>.*), /$\{segment}
