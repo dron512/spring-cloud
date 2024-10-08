@@ -2,14 +2,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: firstservice
+  name: secondservice
   namespace: default
   labels:
-    app: firstservice
+    app: secondservice
 spec:
   selector:
     matchLabels:
-      app: firstservice
+      app: secondservice
   replicas: 1
   strategy:
     rollingUpdate:
@@ -19,11 +19,11 @@ spec:
   template:
     metadata:
       labels:
-        app: firstservice
+        app: secondservice
     spec:
       containers:
-      - name: firstservice
-        image: parkmyounghoi/firstservice:1.0
+      - name: secondservice
+        image: parkmyounghoi/secondservice
         imagePullPolicy: Always
         resources:
           requests:
@@ -42,29 +42,29 @@ spec:
         #   periodSeconds: 10
         # readinessProbe:
         #   httpGet:
-        #     path: /first/test
-        #     port: 8081
+        #     path: /second/test
+        #     port: 8082
         #   initialDelaySeconds: 100
         #   timeoutSeconds: 100
         #   successThreshold: 1
         #   failureThreshold: 3
         #   periodSeconds: 10
         ports:
-        - containerPort: 8081
-          name: firstservice
+        - containerPort: 8082
+          name: secondservice
       restartPolicy: Always
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: firstservice
+  name: secondservice
 spec:
   ports:
-  - nodePort: 30081
-    port: 8081
-    targetPort: 8081
+  - nodePort: 30082
+    port: 8082
+    targetPort: 8082
 
   selector:
-    app: firstservice
+    app: secondservice
   # clusterIP: None
   type: LoadBalancer
