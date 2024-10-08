@@ -2,10 +2,12 @@
 <project version="4">
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/apigatewayservice" />
+    <file type="web" url="file://$PROJECT_DIR$/catalog-service" />
     <file type="web" url="file://$PROJECT_DIR$/configserver" />
     <file type="web" url="file://$PROJECT_DIR$/eurekaserver" />
     <file type="web" url="file://$PROJECT_DIR$/firstclient" />
     <file type="web" url="file://$PROJECT_DIR$/item-service" />
+    <file type="web" url="file://$PROJECT_DIR$/order-service" />
     <file type="web" url="file://$PROJECT_DIR$/secondclient" />
   </component>
   <component name="ProjectRootManager">

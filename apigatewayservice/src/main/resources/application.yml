@@ -14,8 +14,10 @@ spring:
   cloud:
     gateway:
       routes:
+        # First-Service
         - id: first_service
-          uri: lb://first-service:8081/first/**
+#          uri: lb://localhost:8081
+          uri: lb://FIRST-SERVICE
           predicates:
             - Path=/first/**
           filters:
@@ -25,14 +27,25 @@ spring:
                 baseMessage: Hi, there.
                 preLogger: true
                 postLogger: true
+        # Second-Service
         - id: second_service
-          uri: http://localhost:8082/second/**
+#          uri: http://localhost:8082
+          uri: lb://SECOND-SERVICE
           predicates:
             - Path=/second/**
           filters:
             - AddRequestHeader=Req-first-Header, second
             - AddResponseHeader=Res-first-Header, second
             - name: CustomFilter
+        # User-Service
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/users
+            - Method=GET
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
         - id: user-service
           uri: lb://USER-SERVICE
           predicates:
@@ -57,5 +70,21 @@ spring:
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/user-service/(?<segment>.*), /$\{segment}
-
-
+            - AuthorizationHeaderFilter
+        #Order-Service
+        - id: user_service
+          uri: lb://ORDER-SERVICE
+          predicates:
+            - Path=/order-service/**
+            - Method=GET,POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/order-service/(?<segment>.*), /$\{segment}
+        #Catalog-Service
+        - id: catalog-service
+          uri: lb://CATALOG-SERVICE
+          predicates:
+            - Path=/catalog-service/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/catalog-service/(?<segment>.*), /$\{segment}

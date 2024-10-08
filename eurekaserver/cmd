@@ -1,3 +1,7 @@
+docker rm eurekaserver
+docker rmi eurekaserver
+docker rmi parkmyounghoi/eurekaserver
+
 docker build -t eurekaserver .
 docker tag eurekaserver parkmyounghoi/eurekaserver
 docker push parkmyounghoi/eurekaserver
