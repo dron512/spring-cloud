@@ -8,7 +8,7 @@
     </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_17">
-    <output-test url="file://$MODULE_DIR$/../../secondclient/out/test/classes" />
+    <output-test url="file://$MODULE_DIR$/../../secondclient/build/classes/java/test" />
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../secondclient/src/test">
       <sourceFolder url="file://$MODULE_DIR$/../../secondclient/src/test/java" isTestSource="true" />
