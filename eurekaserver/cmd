@@ -1,4 +1,0 @@
-#docker build -t eurekaserver .
-#docker tag eurekaserver parkmyounghoi/eurekaserver
-#docker push parkmyounghoi/eurekaserver
-docker run -p 8761:8761 -d --network javamysql --name eurekaserver parkmyounghoi/eurekaserver
