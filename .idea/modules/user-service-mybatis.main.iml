@@ -10,9 +10,6 @@
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_17">
     <output url="file://$MODULE_DIR$/../../user-service-mybatis/out/production/classes" />
     <exclude-output />
-    <content url="file://$MODULE_DIR$/../../user-service-mybatis/build/generated/sources/annotationProcessor/java/main">
-      <sourceFolder url="file://$MODULE_DIR$/../../user-service-mybatis/build/generated/sources/annotationProcessor/java/main" isTestSource="false" generated="true" />
-    </content>
     <content url="file://$MODULE_DIR$/../../user-service-mybatis/src/main">
       <sourceFolder url="file://$MODULE_DIR$/../../user-service-mybatis/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../user-service-mybatis/src/main/resources" type="java-resource" />

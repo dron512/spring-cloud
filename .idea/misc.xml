@@ -10,6 +10,7 @@
     <file type="web" url="file://$PROJECT_DIR$/order-service" />
     <file type="web" url="file://$PROJECT_DIR$/secondclient" />
     <file type="web" url="file://$PROJECT_DIR$/user-service-jpa" />
+    <file type="web" url="file://$PROJECT_DIR$/user-service-mybatis" />
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />

@@ -7,6 +7,12 @@
       <excludeFolder url="file://$MODULE_DIR$/../../eurekaserver/build" />
       <excludeFolder url="file://$MODULE_DIR$/../../eurekaserver/out" />
     </content>
+    <content url="file://$MODULE_DIR$/../../eurekaserver/out">
+      <excludeFolder url="file://$MODULE_DIR$/../../eurekaserver/out" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../eurekaserver/out">
+      <excludeFolder url="file://$MODULE_DIR$/../../eurekaserver/out" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
