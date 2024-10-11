@@ -4,6 +4,7 @@ import com.mh.orderservice.dto.OrderReqDto;
 import com.mh.orderservice.dto.OrderResDto;
 import com.mh.orderservice.entity.OrderEntity;
 import com.mh.orderservice.service.OrderService;
+import com.mh.orderservice.vo.ResponseOrder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
@@ -44,13 +45,13 @@ public class OrderController {
     }
 
     @GetMapping("/{userId}/orders")
-    public ResponseEntity<List<OrderResDto>> getAllOrders(@PathVariable("userId") String userId) {
+    public ResponseEntity<List<ResponseOrder>> getAllOrders(@PathVariable("userId") String userId) {
         List<OrderEntity> orderList = orderService.getOrdersByUserId(userId);
 
-        List<OrderResDto> result = orderList.stream()
+        List<ResponseOrder> result = orderList.stream()
                 .map( orderEntity -> {
-                    OrderResDto orderResDto = modelMapper.map(orderEntity, OrderResDto.class);
-                    return orderResDto;
+                    ResponseOrder responseOrder = modelMapper.map(orderEntity, ResponseOrder.class);
+                    return responseOrder;
                 })
                 .toList();
         return ResponseEntity.ok(result);

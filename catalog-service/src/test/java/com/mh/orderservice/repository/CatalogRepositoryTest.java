@@ -1,5 +1,6 @@
 package com.mh.orderservice.repository;
 
+import com.mh.catalogservice.repository.CatalogRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
