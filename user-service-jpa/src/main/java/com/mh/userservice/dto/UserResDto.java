@@ -1,5 +1,6 @@
 package com.mh.userservice.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.mh.userservice.vo.ResponseOrder;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserResDto {
     private String email;
     private String name;

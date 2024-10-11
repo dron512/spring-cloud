@@ -3,8 +3,11 @@ package com.mh.userservice.service;
 import com.mh.userservice.dto.UserReqDto;
 import com.mh.userservice.dto.UserResDto;
 import com.mh.userservice.entity.UserEntity;
+import com.mh.userservice.feignclient.OrderServiceClient;
 import com.mh.userservice.repository.UserRepository;
+import com.mh.userservice.vo.ResponseCatalog;
 import com.mh.userservice.vo.ResponseOrder;
+import feign.FeignException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
@@ -34,6 +37,8 @@ public class UserService implements UserDetailsService {
 
     private final Environment env;
     private final RestTemplate restTemplate;
+
+    private final OrderServiceClient orderServiceClient;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -84,14 +89,31 @@ public class UserService implements UserDetailsService {
         /* @LoadBalanced 로 선언헀으면, apigateway-service로 호출 못함 */
         /* http://ORDER-SERVICE/order-service/1234-45565-34343423432/orders */
 //        String orderUrl = String.format(env.getProperty("order_service.url"), userId);
-        String orderUrl = String.format("http://127.0.0.1:8080/order-service/%s/orders", userId);
-        ResponseEntity<List<ResponseOrder>> orderListResponse =
-                restTemplate.exchange(orderUrl, HttpMethod.GET, null,
-                                            new ParameterizedTypeReference<List<ResponseOrder>>() {
-                });
+//        String orderUrl = String.format("http://127.0.0.1:8080/order-service/%s/orders", userId);
+//        ResponseEntity<List<ResponseOrder>> orderListResponse =
+//                restTemplate.exchange(orderUrl, HttpMethod.GET, null,
+//                                            new ParameterizedTypeReference<List<ResponseOrder>>() {
+//                });
+//
+//        ordersList = orderListResponse.getBody();
 
-        System.out.println(orderListResponse);
-        ordersList = orderListResponse.getBody();
+//        카타로그 서비스 테스트
+//        List<ResponseCatalog> catalogList = new ArrayList<>();
+//        String catalogUrl = "http://127.0.0.1:8080/catalog-service/catalogs";
+//        ResponseEntity<List<ResponseCatalog>> catalogListResponse =
+//                restTemplate.exchange(catalogUrl, HttpMethod.GET, null,
+//                                            new ParameterizedTypeReference<List<ResponseCatalog>>() {
+//                });
+//        catalogList = catalogListResponse.getBody();
+//        System.out.println(catalogList);
+
+        try {
+//            ResponseEntity<List<ResponseOrder>> _ordersList = orderServiceClient.getOrders(userId);
+//            ordersList = _ordersList.getBody();
+            ordersList = orderServiceClient.getOrders(userId);
+        } catch (FeignException ex) {
+            log.error(ex.getMessage());
+        }
 
         UserResDto userDto = mapper.map(userEntity, UserResDto.class);
         userDto.setOrders(ordersList);
