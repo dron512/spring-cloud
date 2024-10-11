@@ -13,6 +13,12 @@
     <content url="file://$MODULE_DIR$/../../item-service/src/test">
       <sourceFolder url="file://$MODULE_DIR$/../../item-service/src/test/java" isTestSource="true" />
     </content>
+    <content url="file://$MODULE_DIR$/../../item-service/src/test">
+      <sourceFolder url="file://$MODULE_DIR$/../../item-service/src/test/java" isTestSource="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../item-service/src/test">
+      <sourceFolder url="file://$MODULE_DIR$/../../item-service/src/test/java" isTestSource="true" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="item-service.main" />

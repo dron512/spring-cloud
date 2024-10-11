@@ -7,6 +7,12 @@
       <excludeFolder url="file://$MODULE_DIR$/../../user-service-jpa/build" />
       <excludeFolder url="file://$MODULE_DIR$/../../user-service-jpa/out" />
     </content>
+    <content url="file://$MODULE_DIR$/../../user-service-jpa">
+      <excludeFolder url="file://$MODULE_DIR$/../../user-service-jpa/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../user-service-jpa/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../user-service-jpa/out" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../user-service-jpa" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

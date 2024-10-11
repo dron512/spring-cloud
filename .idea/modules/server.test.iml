@@ -13,6 +13,12 @@
     <content url="file://$MODULE_DIR$/../../eurekaserver/src/test">
       <sourceFolder url="file://$MODULE_DIR$/../../eurekaserver/src/test/java" isTestSource="true" />
     </content>
+    <content url="file://$MODULE_DIR$/../../eurekaserver/src/test">
+      <sourceFolder url="file://$MODULE_DIR$/../../eurekaserver/src/test/java" isTestSource="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../eurekaserver/src/test">
+      <sourceFolder url="file://$MODULE_DIR$/../../eurekaserver/src/test/java" isTestSource="true" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="server.main" />

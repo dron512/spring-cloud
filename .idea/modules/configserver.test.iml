@@ -13,6 +13,12 @@
     <content url="file://$MODULE_DIR$/../../configserver/src/test">
       <sourceFolder url="file://$MODULE_DIR$/../../configserver/src/test/java" isTestSource="true" />
     </content>
+    <content url="file://$MODULE_DIR$/../../configserver/src/test">
+      <sourceFolder url="file://$MODULE_DIR$/../../configserver/src/test/java" isTestSource="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../configserver/src/test">
+      <sourceFolder url="file://$MODULE_DIR$/../../configserver/src/test/java" isTestSource="true" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="configserver.main" />

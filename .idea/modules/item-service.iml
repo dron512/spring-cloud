@@ -7,6 +7,12 @@
       <excludeFolder url="file://$MODULE_DIR$/../../item-service/build" />
       <excludeFolder url="file://$MODULE_DIR$/../../item-service/out" />
     </content>
+    <content url="file://$MODULE_DIR$/../../item-service" />
+    <content url="file://$MODULE_DIR$/../../item-service">
+      <excludeFolder url="file://$MODULE_DIR$/../../item-service/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../item-service/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../item-service/out" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

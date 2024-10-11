@@ -1,0 +1,9 @@
+docker rmi secondservice
+docker rmi parkmyounghoi/secondservice
+docker build -t secondservice .
+docker tag secondservice parkmyounghoi/secondservice
+docker push parkmyounghoi/secondservice
+
+
+docker run -p 8082:8082 -d --network javamysql --name secondservice \
+-e EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://eurekaserver:8761/eureka parkmyounghoi/secondservice

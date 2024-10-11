@@ -5,6 +5,15 @@
     <content url="file://$MODULE_DIR$/../../apigatewayservice">
       <excludeFolder url="file://$MODULE_DIR$/../../apigatewayservice/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/../../apigatewayservice/build" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../apigatewayservice">
+      <excludeFolder url="file://$MODULE_DIR$/../../apigatewayservice/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../apigatewayservice/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../apigatewayservice/out" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../apigatewayservice">
+      <excludeFolder url="file://$MODULE_DIR$/../../apigatewayservice/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../apigatewayservice/build" />
       <excludeFolder url="file://$MODULE_DIR$/../../apigatewayservice/out" />
     </content>
     <orderEntry type="inheritedJdk" />

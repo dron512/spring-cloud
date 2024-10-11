@@ -7,6 +7,12 @@
       <excludeFolder url="file://$MODULE_DIR$/../../firstclient/build" />
       <excludeFolder url="file://$MODULE_DIR$/../../firstclient/out" />
     </content>
+    <content url="file://$MODULE_DIR$/../../firstclient">
+      <excludeFolder url="file://$MODULE_DIR$/../../firstclient/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../firstclient/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../firstclient/out" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../firstclient" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

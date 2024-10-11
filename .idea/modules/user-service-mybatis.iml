@@ -7,6 +7,16 @@
       <excludeFolder url="file://$MODULE_DIR$/../../user-service-mybatis/build" />
       <excludeFolder url="file://$MODULE_DIR$/../../user-service-mybatis/out" />
     </content>
+    <content url="file://$MODULE_DIR$/../../user-service-mybatis">
+      <excludeFolder url="file://$MODULE_DIR$/../../user-service-mybatis/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../user-service-mybatis/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../user-service-mybatis/out" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../user-service-mybatis">
+      <excludeFolder url="file://$MODULE_DIR$/../../user-service-mybatis/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../user-service-mybatis/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../user-service-mybatis/out" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
