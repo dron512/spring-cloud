@@ -11,3 +11,8 @@ kafka-topics --create --topic topic1 --bootstrap-server 192.168.0.29:9092
 # 컨슈머 실행하기
 kafka-console-consumer --topic topic1 --bootstrap-server localhost:9092
 kafka-console-consumer --topic topic1 --bootstrap-server 192.168.0.29:9092
+
+kafka-console-consumer --topic topic1 --bootstrap-server 192.168.0.29:9092 --from-beginning
+
+# 프로듀서 실행하기
+kafka-console-producer --topic topic1 --bootstrap-server 192.168.0.29:9092

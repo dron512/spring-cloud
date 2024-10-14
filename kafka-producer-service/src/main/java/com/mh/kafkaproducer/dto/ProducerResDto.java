@@ -10,11 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class ProducerResDto {
-    private String productId;
-    private Integer qty;
-    private Integer unitPrice;
-    private Integer totalPrice;
-
-    private String orderId;
-    private String userId;
+    private String name;
+    private int quantity;
+    private Long id;
 }

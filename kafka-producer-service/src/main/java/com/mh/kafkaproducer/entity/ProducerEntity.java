@@ -15,7 +15,7 @@ import java.util.Date;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="orders")
+@Table(name="producers")
 public class ProducerEntity implements Serializable {
 
     @Id

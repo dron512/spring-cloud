@@ -30,29 +30,18 @@ public class KafkaProducerController {
                 environment.getProperty("server.port"));
     }
 
-    @PostMapping("/{userId}/orders")
-    public ResponseEntity<ProducerResDto> createOrder(@PathVariable("userId") String userId,
-                                                      @RequestBody ProducerReqDto producerReqDto) {
-        log.info("Before add orders data");
-
-        producerReqDto.setUserId(userId);
-        ProducerResDto orderResDto = producerService.createOrder(producerReqDto);
-
-        log.info("After added orders data");
+    @PostMapping("/producers")
+    public ResponseEntity<ProducerResDto> createOrder(@RequestBody ProducerReqDto producerReqDto) {
+        log.info("Before add producers data");
+        ProducerResDto orderResDto = producerService.createProducer(producerReqDto);
+        log.info("After added producers data");
 
         return ResponseEntity.status(HttpStatus.CREATED).body(orderResDto);
     }
 
-    @GetMapping("/{userId}/orders")
-    public ResponseEntity<List<ProducerResDto>> getAllOrders(@PathVariable("userId") String userId) {
-        List<ProducerEntity> orderList = producerService.getOrdersByUserId(userId);
-
-        List<ProducerResDto> result = orderList.stream()
-                .map(producerEntity -> {
-                    ProducerResDto orderResDto = modelMapper.map(producerEntity, ProducerResDto.class);
-                    return orderResDto;
-                })
-                .toList();
-        return ResponseEntity.ok(result);
+    @GetMapping("/producers")
+    public ResponseEntity<List<ProducerResDto>> getAllOrders() {
+        List<ProducerResDto> producerList = producerService.getAll();
+        return ResponseEntity.ok(producerList);
     }
 }

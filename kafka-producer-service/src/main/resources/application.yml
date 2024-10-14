@@ -1,11 +1,11 @@
 spring:
   application:
-    name: order-service
+    name: kafka-producer-service
   datasource:
+    url: jdbc:mysql://localhost:3306/pmh?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false&requireSSL=false&serverTimezone=Asia/Seoul&allowMultiQueries=true
     username: root
     password: 1234
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/pmh?characterEncoding=UTF-8&serverTimezone=UTC
 
   jpa:
     hibernate:
@@ -18,9 +18,6 @@ spring:
   sql:
     init:
       platform: mysql
-
-mh:
-  value: "{cipher}AQBVHrD0Sf21J5LYWyDRUKPll0WQN0+vrUz+O+wAoiFeoIFqD7uqdFf4nDlpm7cQaAikKMHrTh4Kfih63whp+iTKhgt7Mu6T7uUtIMs6HqbRaAP8N1voOZHeWZe+f8K9jgyY41iq50BRGwnI/SMRDpWM+MZQF589D9c1H8vc20D7qwsAjqWoixyGoZwdy1a1Sg9zXWrhmZ/fHGyNy4ne15Sgp1Whh5XlGTjd5Ccgs9KPW1chp5y+e61DHm+3Qqff6Koa2FgIzjLV7Qt8DRCA8BoDIw/QlD/QLUIX3KrkHVIvE7UneM3HYdYgRXIk4VilNBNbDQyuA7rK7Yi0Q1BlFRIbxLV7Wvoqzs+FwRzShPQAtpftZYlmVTqvgMZT96Y++AM="
 
 server:
   port: 8090
