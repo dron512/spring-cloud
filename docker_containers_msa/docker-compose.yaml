@@ -16,7 +16,24 @@ services:
       - "8761:8761"
     networks:
       - javamysql
-
+  firstservice:
+    image: parkmyounghoi/firstservice
+    container_name: firstservice
+    ports:
+      - "8761:8761"
+    networks:
+      - javamysql
+    depends_on:
+      - eurekaserver
+  secondservice:
+    image: parkmyounghoi/secondservice
+    container_name: secondservice
+    ports:
+      - "8761:8761"
+    networks:
+      - javamysql
+    depends_on:
+      - eurekaserver
   apigatewayserver:
     image: parkmyounghoi/apigatewayserver
     container_name: apigatewayserver
