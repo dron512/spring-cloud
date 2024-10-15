@@ -20,7 +20,7 @@ services:
     image: parkmyounghoi/firstservice
     container_name: firstservice
     ports:
-      - "8761:8761"
+      - "8081:8081"
     networks:
       - javamysql
     depends_on:
@@ -29,7 +29,7 @@ services:
     image: parkmyounghoi/secondservice
     container_name: secondservice
     ports:
-      - "8761:8761"
+      - "8082:8082"
     networks:
       - javamysql
     depends_on:

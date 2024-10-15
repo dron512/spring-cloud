@@ -3,6 +3,7 @@ package com.mh.userservice.controller;
 import com.mh.userservice.dto.UserReqDto;
 import com.mh.userservice.dto.UserResDto;
 import com.mh.userservice.entity.UserEntity;
+import com.mh.userservice.feignclient.CatalogServiceClient;
 import com.mh.userservice.service.UserService;
 import com.mh.userservice.vo.ResponseUser;
 import jakarta.servlet.http.HttpServletResponse;
@@ -30,6 +31,15 @@ public class UserController {
 
     private final UserService userService;
     private final Environment environment;
+
+    private final CatalogServiceClient catalogServiceClient;
+
+    @GetMapping("/cata")
+    public String cata(){
+        String test = catalogServiceClient.test();
+        log.info(test);
+        return test;
+    }
 
     @GetMapping("/env")
     public String env(){

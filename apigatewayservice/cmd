@@ -1,3 +1,6 @@
+docker rm apigatewayserver
+docker rmi parkmyounghoi/apigatewayserver
+docker rmi apigatewayserver
 docker build -t apigatewayserver .
 docker tag apigatewayserver parkmyounghoi/apigatewayserver
 docker push parkmyounghoi/apigatewayserver

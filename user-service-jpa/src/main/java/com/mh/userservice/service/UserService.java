@@ -3,6 +3,7 @@ package com.mh.userservice.service;
 import com.mh.userservice.dto.UserReqDto;
 import com.mh.userservice.dto.UserResDto;
 import com.mh.userservice.entity.UserEntity;
+import com.mh.userservice.feignclient.CatalogServiceClient;
 import com.mh.userservice.feignclient.OrderServiceClient;
 import com.mh.userservice.repository.UserRepository;
 import com.mh.userservice.vo.ResponseCatalog;
@@ -39,6 +40,7 @@ public class UserService implements UserDetailsService {
     private final RestTemplate restTemplate;
 
     private final OrderServiceClient orderServiceClient;
+    private final CatalogServiceClient catalogServiceClient;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -111,6 +113,15 @@ public class UserService implements UserDetailsService {
 //            ResponseEntity<List<ResponseOrder>> _ordersList = orderServiceClient.getOrders(userId);
 //            ordersList = _ordersList.getBody();
             ordersList = orderServiceClient.getOrders(userId);
+        } catch (FeignException ex) {
+            log.error(ex.getMessage());
+        }
+
+        try {
+//            ResponseEntity<List<ResponseOrder>> _ordersList = orderServiceClient.getOrders(userId);
+//            ordersList = _ordersList.getBody();
+            List<ResponseCatalog> list = catalogServiceClient.getCatalogs();
+            log.info(list.toString());
         } catch (FeignException ex) {
             log.error(ex.getMessage());
         }
