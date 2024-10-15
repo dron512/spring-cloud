@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  configserver:
+    image: parkmyounghoi/configserver
+    container_name: configserver
+    ports:
+      - "8888:8888"
+    networks:
+      - javamysql
+
+  eurekaserver:
+    image: parkmyounghoi/eurekaserver
+    container_name: eurekaserver
+    ports:
+      - "8761:8761"
+    networks:
+      - javamysql
+
+  apigatewayserver:
+    image: parkmyounghoi/apigatewayserver
+    container_name: apigatewayserver
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eurekaserver:8761/eureka
+    ports:
+      - "8080:8080"
+    networks:
+      - javamysql
+
+  mysql-container:
+    image: mysql:latest
+    container_name: mysql-container
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_DATABASE=pmh
+    ports:
+      - "3306:3306"
+    networks:
+      - javamysql
+
+networks:
+  javamysql:
+    driver: bridge

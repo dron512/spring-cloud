@@ -10,10 +10,10 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @RequiredArgsConstructor
 public class ConsumerService {
-    private final ConsumerRepository catalogRepository;
+    private final ConsumerRepository consumerRepository;
 
-    public Iterable<ConsumerEntity> getAllCatalogs() {
-        return catalogRepository.findAll();
+    public Iterable<ConsumerEntity> getAllConsumers() {
+        return consumerRepository.findAll();
     }
 
 }

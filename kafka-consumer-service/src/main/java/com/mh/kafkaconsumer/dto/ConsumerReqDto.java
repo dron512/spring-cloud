@@ -1,5 +1,6 @@
 package com.mh.kafkaconsumer.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,11 +11,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class ConsumerReqDto {
-    private String productId;
-    private Integer qty;
-    private Integer unitPrice;
-    private Integer totalPrice;
+    @Schema(defaultValue = "producer-001")
+    private String name;
+    @Schema(defaultValue = "100")
+    private int quantity;
 
-    private String orderId;
-    private String userId;
+    @Schema(defaultValue = "1")
+    private Long id;
 }

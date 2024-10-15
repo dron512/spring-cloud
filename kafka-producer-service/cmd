@@ -8,6 +8,10 @@ docker run -p 8080:8080 -e SPRING_DATASOURCE_URL=jdbc:mysql://mysql-container:33
 kafka-topics --create --topic topic1 --bootstrap-server localhost:9092
 kafka-topics --create --topic topic1 --bootstrap-server 192.168.0.29:9092
 
+# 토픽 삭제하기
+kafka-topics --delete --topic topic1 --bootstrap-server 192.168.0.29:9092
+
+
 # 컨슈머 실행하기
 kafka-console-consumer --topic topic1 --bootstrap-server localhost:9092
 kafka-console-consumer --topic topic1 --bootstrap-server 192.168.0.29:9092

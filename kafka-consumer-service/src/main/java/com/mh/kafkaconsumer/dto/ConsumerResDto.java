@@ -1,5 +1,6 @@
 package com.mh.kafkaconsumer.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,9 +15,11 @@ import java.time.LocalDate;
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ConsumerResDto {
-    private String productId;
-    private String productName;
-    private Integer unitPrice;
-    private Integer stock;
-    private LocalDate createdAt;
+    @Schema(defaultValue = "producer-001")
+    private String name;
+    @Schema(defaultValue = "100")
+    private int quantity;
+
+    @Schema(defaultValue = "1")
+    private Long id;
 }

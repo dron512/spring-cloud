@@ -31,7 +31,7 @@ public class KafkaProducerController {
     }
 
     @PostMapping("/producers")
-    public ResponseEntity<ProducerResDto> createOrder(@RequestBody ProducerReqDto producerReqDto) {
+    public ResponseEntity<ProducerResDto> createProducers(@RequestBody ProducerReqDto producerReqDto) {
         log.info("Before add producers data");
         ProducerResDto orderResDto = producerService.createProducer(producerReqDto);
         log.info("After added producers data");
@@ -40,7 +40,7 @@ public class KafkaProducerController {
     }
 
     @GetMapping("/producers")
-    public ResponseEntity<List<ProducerResDto>> getAllOrders() {
+    public ResponseEntity<List<ProducerResDto>> getAllProducers() {
         List<ProducerResDto> producerList = producerService.getAll();
         return ResponseEntity.ok(producerList);
     }

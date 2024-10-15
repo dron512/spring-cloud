@@ -40,12 +40,12 @@ public class KafkaConsumerController {
                 environment.getProperty("server.port"));
     }
 
-    @GetMapping("/catalogs")
-    public ResponseEntity<List<ConsumerResDto>> getCatalogs() {
-        Iterable<ConsumerEntity> catalogList = consumerService.getAllCatalogs();
+    @GetMapping("/consumers")
+    public ResponseEntity<List<ConsumerResDto>> getConsumers() {
+        Iterable<ConsumerEntity> consumerEntities = consumerService.getAllConsumers();
 
         List<ConsumerResDto> result = new ArrayList<>();
-        catalogList.forEach(v -> {
+        consumerEntities.forEach(v -> {
             result.add(new ModelMapper().map(v, ConsumerResDto.class));
         });
 
