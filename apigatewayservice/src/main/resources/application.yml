@@ -72,7 +72,7 @@ spring:
             - RewritePath=/user-service/(?<segment>.*), /$\{segment}
             - AuthorizationHeaderFilter
         #Order-Service
-        - id: user_service
+        - id: order-service
           uri: lb://ORDER-SERVICE
           predicates:
             - Path=/order-service/**
