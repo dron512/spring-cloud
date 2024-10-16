@@ -8,7 +8,6 @@ services:
       - "8888:8888"
     networks:
       - javamysql
-
   eurekaserver:
     image: parkmyounghoi/eurekaserver
     container_name: eurekaserver
@@ -38,9 +37,22 @@ services:
     image: parkmyounghoi/apigatewayserver
     container_name: apigatewayserver
     environment:
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eurekaserver:8761/eureka
+      - spring.cloud.config.uri=http://configserver:8888
+      - spring.cloud.config.name=apigatewayserver
+      - spring.profiles.active=docker
     ports:
       - "8080:8080"
+    networks:
+      - javamysql
+  catalogservice:
+    image: parkmyounghoi/catalogservice
+    container_name: catalogservice
+    environment:
+      - spring.cloud.config.uri=http://configserver:8888
+      - spring.cloud.config.name=catalog-service
+      - spring.profiles.active=docker
+    ports:
+      - "10002:10002"
     networks:
       - javamysql
 
