@@ -38,7 +38,7 @@ services:
     container_name: apigatewayserver
     environment:
       - spring.cloud.config.uri=http://configserver:8888
-      - spring.cloud.config.name=apigatewayserver
+      - spring.cloud.config.name=apigateway
       - spring.profiles.active=docker
     ports:
       - "8080:8080"
