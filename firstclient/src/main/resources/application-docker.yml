@@ -4,7 +4,6 @@ server:
 spring:
   application:
     name: first-service
-
 mh:
   value: my first dev value
 
@@ -13,8 +12,8 @@ eureka:
 #    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
   client:
     service-url:
-      defaultZone: http://127.0.0.1:8761/eureka
+#      defaultZone: http://127.0.0.1:8761/eureka
 
-#      defaultZone: http://eurekaserver:8761/eureka
+      defaultZone: http://eurekaserver:8761/eureka
     fetch-registry: true
     register-with-eureka: true

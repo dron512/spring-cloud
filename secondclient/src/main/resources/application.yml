@@ -4,7 +4,6 @@ server:
 spring:
   application:
     name: second-service
-
 mh:
   value: the second value
 

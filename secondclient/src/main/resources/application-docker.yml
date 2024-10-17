@@ -1,17 +1,19 @@
 server:
-  port: 8081
+  port: 8082
 
 spring:
   application:
-    name: first-service
+    name: second-service
 mh:
-  value: my first value
+  value: the second value
 
 eureka:
 #  instance:
 #    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
   client:
     service-url:
-      defaultZone: http://127.0.0.1:8761/eureka
+      defaultZone: http://eurekaserver:8761/eureka
     fetch-registry: true
     register-with-eureka: true
+
+

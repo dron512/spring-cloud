@@ -110,16 +110,12 @@ public class UserService implements UserDetailsService {
 //        System.out.println(catalogList);
 
         try {
-//            ResponseEntity<List<ResponseOrder>> _ordersList = orderServiceClient.getOrders(userId);
-//            ordersList = _ordersList.getBody();
             ordersList = orderServiceClient.getOrders(userId);
         } catch (FeignException ex) {
             log.error(ex.getMessage());
         }
 
         try {
-//            ResponseEntity<List<ResponseOrder>> _ordersList = orderServiceClient.getOrders(userId);
-//            ordersList = _ordersList.getBody();
             List<ResponseCatalog> list = catalogServiceClient.getCatalogs();
             log.info(list.toString());
         } catch (FeignException ex) {
