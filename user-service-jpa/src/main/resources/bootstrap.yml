@@ -15,3 +15,5 @@ encrypt:
     password: 123456
     alias: mytestkey
     secret: 123456
+
+

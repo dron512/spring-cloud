@@ -40,6 +40,16 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-loadbalancer'
     implementation 'org.springframework.cloud:spring-cloud-netflix-eureka-client'
 
+    // kafka 사용
+    implementation 'org.springframework.kafka:spring-kafka'
+// matric 저장 하기
+    implementation 'io.micrometer:micrometer-observation'
+// zipkin 라이브러리 사용
+    implementation 'io.zipkin.brave:brave-instrumentation-spring-web'
+    implementation 'io.zipkin.reporter2:zipkin-reporter-brave'
+
+    implementation 'io.github.openfeign:feign-micrometer'
+    
     implementation 'org.springframework.cloud:spring-cloud-starter-config'
     implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
     implementation 'org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j'

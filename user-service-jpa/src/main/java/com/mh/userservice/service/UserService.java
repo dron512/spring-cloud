@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
+import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpMethod;
@@ -41,6 +42,9 @@ public class UserService implements UserDetailsService {
 
     private final OrderServiceClient orderServiceClient;
     private final CatalogServiceClient catalogServiceClient;
+
+    private final CircuitBreakerFactory circuitBreakerFactory;
+
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -109,22 +113,29 @@ public class UserService implements UserDetailsService {
 //        catalogList = catalogListResponse.getBody();
 //        System.out.println(catalogList);
 
-        try {
+//        try {
 //            ResponseEntity<List<ResponseOrder>> _ordersList = orderServiceClient.getOrders(userId);
 //            ordersList = _ordersList.getBody();
-            ordersList = orderServiceClient.getOrders(userId);
-        } catch (FeignException ex) {
-            log.error(ex.getMessage());
-        }
+//            ordersList = orderServiceClient.getOrders(userId);
+//        } catch (FeignException ex) {
+//            log.error(ex.getMessage());
+//        }
 
-        try {
+        ordersList = circuitBreakerFactory.create("default")
+                .run(
+                     () -> orderServiceClient.getOrders(userId),
+                    throwable -> new ArrayList()
+                );
+
+        // catalog 서비스 테스트
+//        try {
 //            ResponseEntity<List<ResponseOrder>> _ordersList = orderServiceClient.getOrders(userId);
 //            ordersList = _ordersList.getBody();
-            List<ResponseCatalog> list = catalogServiceClient.getCatalogs();
-            log.info(list.toString());
-        } catch (FeignException ex) {
-            log.error(ex.getMessage());
-        }
+//            List<ResponseCatalog> list = catalogServiceClient.getCatalogs();
+//            log.info(list.toString());
+//        } catch (FeignException ex) {
+//            log.error(ex.getMessage());
+//        }
 
         UserResDto userDto = mapper.map(userEntity, UserResDto.class);
         userDto.setOrders(ordersList);
