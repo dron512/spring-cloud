@@ -3,6 +3,7 @@ package com.mh.orderservice.controller;
 import com.mh.orderservice.dto.OrderReqDto;
 import com.mh.orderservice.dto.OrderResDto;
 import com.mh.orderservice.entity.OrderEntity;
+import com.mh.orderservice.messagequeue.OrderProducer;
 import com.mh.orderservice.service.OrderService;
 import com.mh.orderservice.vo.ResponseOrder;
 import lombok.RequiredArgsConstructor;

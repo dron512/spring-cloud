@@ -3,6 +3,7 @@ package com.mh.orderservice.service;
 import com.mh.orderservice.dto.OrderReqDto;
 import com.mh.orderservice.dto.OrderResDto;
 import com.mh.orderservice.entity.OrderEntity;
+import com.mh.orderservice.messagequeue.OrderProducer;
 import com.mh.orderservice.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,6 +24,8 @@ public class OrderService  {
     private final Environment env;
     private final ModelMapper modelMapper;
 
+    private final OrderProducer orderProducer;
+
     public OrderResDto createOrder(OrderReqDto orderReqDto) {
         orderReqDto.setOrderId(UUID.randomUUID().toString());
         orderReqDto.setTotalPrice(orderReqDto.getQty() * orderReqDto.getUnitPrice());
@@ -30,7 +33,10 @@ public class OrderService  {
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         OrderEntity orderEntity = modelMapper.map(orderReqDto, OrderEntity.class);
 
-        orderRepository.save(orderEntity);
+        orderEntity = orderRepository.save(orderEntity);
+
+        //kafka Messsage cend
+        orderProducer.sendMessage(orderEntity);
 
         OrderResDto orderResDto = modelMapper.map(orderEntity, OrderResDto.class);
 
