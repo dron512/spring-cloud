@@ -11,7 +11,7 @@ spring:
         git: #default
           uri: https://github.com/dron512/spring-cloud-config
           default-label: main
-    #        bootstrap: true
+#          bootstrap: true
 
 #encrypt:
 #  keyStore:

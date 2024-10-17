@@ -44,17 +44,17 @@ services:
       - "8080:8080"
     networks:
       - javamysql
-  catalogservice:
-    image: parkmyounghoi/catalogservice
-    container_name: catalogservice
-    environment:
-      - spring.cloud.config.uri=http://configserver:8888
-      - spring.cloud.config.name=catalog-service
-      - spring.profiles.active=docker
-    ports:
-      - "10002:10002"
-    networks:
-      - javamysql
+#  catalogservice:
+#    image: parkmyounghoi/catalogservice
+#    container_name: catalogservice
+#    environment:
+#      - spring.cloud.config.uri=http://configserver:8888
+#      - spring.cloud.config.name=catalog-service
+#      - spring.profiles.active=docker
+#    ports:
+#      - "10002:10002"
+#    networks:
+#      - javamysql
 
   mysql-container:
     image: mysql:latest
