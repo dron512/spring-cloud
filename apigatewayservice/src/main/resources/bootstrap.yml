@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: default
+    active: jpa
   cloud:
     config:
       uri: http://localhost:8888

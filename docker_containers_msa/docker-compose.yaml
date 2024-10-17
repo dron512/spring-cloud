@@ -18,6 +18,8 @@ services:
   firstservice:
     image: parkmyounghoi/firstservice
     container_name: firstservice
+    environment:
+      - spring.profiles.active=docker
     ports:
       - "8081:8081"
     networks:
@@ -27,6 +29,8 @@ services:
   secondservice:
     image: parkmyounghoi/secondservice
     container_name: secondservice
+    environment:
+      - spring.profiles.active=docker
     ports:
       - "8082:8082"
     networks:
@@ -38,7 +42,7 @@ services:
     container_name: apigatewayserver
     environment:
       - spring.cloud.config.uri=http://configserver:8888
-      - spring.cloud.config.name=apigateway
+      - spring.cloud.config.name=apigatewayserver
       - spring.profiles.active=docker
     ports:
       - "8080:8080"
