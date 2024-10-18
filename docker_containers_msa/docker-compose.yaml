@@ -59,18 +59,39 @@ services:
 #      - "10002:10002"
 #    networks:
 #      - javamysql
-
+    # depends_on:
+    # - mysql-container
+    #   condition: service_healthy
   mysql-container:
     image: mysql:latest
     container_name: mysql-container
     environment:
       - MYSQL_ROOT_PASSWORD=1234
-      - MYSQL_DATABASE=pmh
+      - MYSQL_DATABASE=msa
     ports:
       - "3306:3306"
     networks:
       - javamysql
-
+    volumes:
+      - ./initdb.d:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  zipkin:
+    image: openzipkin/zipkin
+    ports:
+      - "9411:9411"
+    environment:
+      - STORAGE_TYPE=mysql
+      - MYSQL_DB=msa
+      - MYSQL_USER=root
+      - MYSQL_PASS=1234
+      - MYSQL_HOST=mysql
+    depends_on:
+      mysql-container:
+        condition: service_healthy
 networks:
   javamysql:
     driver: bridge
