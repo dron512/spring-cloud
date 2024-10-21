@@ -1,4 +1,4 @@
 package com.mh.catalogservice.messagequeue;
 
-public class KafkaProdcer {
+public class KafkaCatalog {
 }
