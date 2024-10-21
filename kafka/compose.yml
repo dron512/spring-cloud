@@ -54,7 +54,8 @@ services:
       SCHEMA_REGISTRY_LISTENERS: http://0.0.0.0:8081
 
   connect:
-    image: cnfldemos/cp-server-connect-datagen:0.6.2-7.5.0
+    image: confluentinc/cp-kafka-connect:7.5.0
+    # image: cnfldemos/cp-server-connect-datagen:0.6.2-7.5.0
     hostname: connect
     container_name: connect
     depends_on:
@@ -175,3 +176,10 @@ services:
       KAFKA_REST_BOOTSTRAP_SERVERS: 'broker:29092'
       KAFKA_REST_LISTENERS: "http://0.0.0.0:8082"
       KAFKA_REST_SCHEMA_REGISTRY_URL: 'http://schema-registry:8081'
+
+# jdbc 커넥터 설치
+#confluent-hub install confluentinc/kafka-connect-jdbc:latest
+# 컨슈머 실행
+# kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic jdbc-user_entity --from-beginning
+
+# INSERT INTO `msa`.`user_entity` (`idx`, `email`, `name`, `password`, `user_id`) VALUES (4, 'qwer', 'qwer', 'qwer', 'qwer');

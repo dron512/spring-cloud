@@ -36,7 +36,7 @@ public class OrderService  {
         orderEntity = orderRepository.save(orderEntity);
 
         //kafka Messsage cend
-//        orderProducer.sendMessage(orderEntity);
+       orderProducer.sendMessage(orderEntity);
 
         OrderResDto orderResDto = modelMapper.map(orderEntity, OrderResDto.class);
 
