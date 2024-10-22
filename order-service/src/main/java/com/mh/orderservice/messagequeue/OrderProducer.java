@@ -22,7 +22,7 @@ public class OrderProducer {
     List<Field> fields = Arrays.asList(OrderEntity.class.getDeclaredFields());
 
     public void sendMessage(OrderEntity orderEntity) {
-        String topic = "order-topic";
+        String topic = "topic";
 
         ObjectMapper mapper = new ObjectMapper();
         String jsonInString = "";
@@ -35,17 +35,17 @@ public class OrderProducer {
         kafkaTemplate.send(topic, jsonInString.toString());
         log.info("Order message sent to Kafka: {}", jsonInString.toString());
 
-//        StringBuilder message = new StringBuilder();
-//        for (Field field : fields) {
-//            field.setAccessible(true);
-//            try {
-//                message.append(field.getName()).append(": ").append(field.get(orderEntity)).append(", ");
-//            } catch (IllegalAccessException e) {
-//                log.error("Error accessing field: {}", e.getMessage());
-//            }
-//        }
-
-//        kafkaTemplate.send(topic, message.toString());
-//        log.info("Order message sent to Kafka: {}", message.toString());
+//       StringBuilder message = new StringBuilder();
+//       for (Field field : fields) {
+//           field.setAccessible(true);
+//           try {
+//               message.append(field.getName()).append(": ").append(field.get(orderEntity)).append(", ");
+//           } catch (IllegalAccessException e) {
+//               log.error("Error accessing field: {}", e.getMessage());
+//           }
+//       }
+//
+//       kafkaTemplate.send(topic, message.toString());
+//       log.info("Order message sent to Kafka: {}", message.toString());
     }
 }

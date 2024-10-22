@@ -5,14 +5,14 @@ services:
     ports:
       - "8888:8888"
     networks:
-      - javamysql
+      - msa
   eurekaserver:
     image: parkmyounghoi/eurekaserver
     container_name: eurekaserver
     ports:
       - "8761:8761"
     networks:
-      - javamysql
+      - msa
   firstservice:
     image: parkmyounghoi/firstservice
     container_name: firstservice
@@ -22,7 +22,7 @@ services:
     ports:
       - "8081:8081"
     networks:
-      - javamysql
+      - msa
     depends_on:
       - eurekaserver
   secondservice:
@@ -34,7 +34,7 @@ services:
     ports:
       - "8082:8082"
     networks:
-      - javamysql
+      - msa
     depends_on:
       - eurekaserver
   apigatewayserver:
@@ -47,7 +47,7 @@ services:
     ports:
       - "8080:8080"
     networks:
-      - javamysql
+      - msa
 #  catalogservice:
 #    image: parkmyounghoi/catalogservice
 #    container_name: catalogservice
@@ -74,7 +74,7 @@ services:
     ports:
       - "3306:3306"
     networks:
-      - javamysql
+      - msa
     volumes:
       - ./initdb.d:/docker-entrypoint-initdb.d
     healthcheck:
@@ -84,9 +84,20 @@ services:
       retries: 5
 
   zipkin:
-     image: openzipkin/zipkin
-     ports:
-       - "9411:9411"
+    image: openzipkin/zipkin
+    ports:
+      - "9411:9411"
+  #   environment:
+  #     - STORAGE_TYPE=mysql
+  #     - MYSQL_DB=msa
+  #     - MYSQL_USER=root
+  #     - MYSQL_PASS=1234
+  #     - MYSQL_HOST=mysql
+  #   networks:
+  #     - javamysql
+    # depends_on:
+    #   mysql:
+    #     condition: service_healthy
 networks:
-  javamysql:
+  msa:
     driver: bridge
