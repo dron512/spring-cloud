@@ -5,23 +5,24 @@ services:
     ports:
       - "8888:8888"
     networks:
-      - javamysql
+      - msa
   eurekaserver:
     image: parkmyounghoi/eurekaserver
     container_name: eurekaserver
     ports:
       - "8761:8761"
     networks:
-      - javamysql
+      - msa
   firstservice:
     image: parkmyounghoi/firstservice
     container_name: firstservice
     environment:
       - spring.profiles.active=docker
+      - server.port=20010
     ports:
       - "8081:8081"
     networks:
-      - javamysql
+      - msa
     depends_on:
       - eurekaserver
   secondservice:
@@ -29,10 +30,11 @@ services:
     container_name: secondservice
     environment:
       - spring.profiles.active=docker
+      - server.port=20020
     ports:
       - "8082:8082"
     networks:
-      - javamysql
+      - msa
     depends_on:
       - eurekaserver
   apigatewayserver:
@@ -45,7 +47,7 @@ services:
     ports:
       - "8080:8080"
     networks:
-      - javamysql
+      - msa
 #  catalogservice:
 #    image: parkmyounghoi/catalogservice
 #    container_name: catalogservice
@@ -72,7 +74,7 @@ services:
     ports:
       - "3306:3306"
     networks:
-      - javamysql
+      - msa
     volumes:
       - ./initdb.d:/docker-entrypoint-initdb.d
     healthcheck:
@@ -97,5 +99,5 @@ services:
     #   mysql:
     #     condition: service_healthy
 networks:
-  javamysql:
+  msa:
     driver: bridge
