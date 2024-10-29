@@ -47,8 +47,8 @@ services:
       CONFLUENT_SUPPORT_CUSTOMER_ID: 'anonymous'
 
   connect:
-    image: parkmyounghoi/kafka-connect
-    # image: cnfldemos/cp-server-connect-datagen:0.6.4-7.6.0
+#    image: parkmyounghoi/kafka-connect
+    image: cnfldemos/cp-server-connect-datagen:0.6.4-7.6.0
     hostname: connect
     container_name: connect
     networks:
